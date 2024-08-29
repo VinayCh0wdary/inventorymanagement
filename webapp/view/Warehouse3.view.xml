@@ -1,0 +1,180 @@
+<mvc:View
+    controllerName="inventorymanagement.controller.Warehouse3"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+>
+    <Page
+        id="page2"
+        title="{localmodel>/WarehouseName}"
+    >
+        <fb:FilterBar
+            id="filterbar"
+            useToolbar="false"
+            search="onSearch"
+            showFilterConfiguration="false"
+        >
+            <fb:filterGroupItems>
+                <fb:FilterGroupItem
+                    name="Storage"
+                    label="{i18n>Storagetype}"
+                    groupName="Group1"
+                    visibleInFilterBar="true"
+                >
+                    <fb:control>
+                        <MultiComboBox
+                            id="SID"
+                            name="Storage"
+                            selectionChange=".onSelectionChange"
+                            items="{localmodel>/Storage}"
+                        >
+                            <core:Item
+                                key="{localmodel>name}"
+                                text="{localmodel>value}"
+                            />
+                        </MultiComboBox>
+                        <!-- <ComboBox
+                            id="SID"
+                            items="{localmodel>/Storage}"
+                            change="onChangeStorage"
+                            selectedKey="{localmodel>/name}"
+                        >
+                            <core:Item
+                                key="{localmodel>name}"
+                                text="{localmodel>value}"
+                            />
+                        </ComboBox> -->
+                    </fb:control>
+                </fb:FilterGroupItem>
+                <fb:FilterGroupItem
+                    name="Section"
+                    label="{i18n>Section}"
+                    groupName="Group1"
+                    visibleInFilterBar="true"
+                >
+                    <fb:control>
+                        <MultiComboBox
+                            id="SectionId"
+                            items="{localmodel>/Section}"
+                            change="onChangeSection"
+                            selectedKey="{localmodel>/name}"
+                        >
+                            <core:Item
+                                key="{localmodel>name}"
+                                text="{localmodel>value}"
+                            />
+                        </MultiComboBox>
+                    </fb:control>
+                </fb:FilterGroupItem>
+                <fb:FilterGroupItem
+                    name="Bin"
+                    label="{i18n>Bin}"
+                    groupName="Group1"
+                    visibleInFilterBar="true"
+                >
+                    <fb:control>
+                        <MultiComboBox
+                            id="BinId"
+                            items="{localmodel>/Bin}"
+                            change="onChangebin"
+                            selectedKey="{localmodel>/name}"
+                        >
+                            <core:Item
+                                key="{localmodel>name}"
+                                text="{localmodel>value}"
+                            />
+                        </MultiComboBox>
+                    </fb:control>
+                </fb:FilterGroupItem>
+                <fb:FilterGroupItem
+                    name="Rack"
+                    label="{i18n>Rack}"
+                    groupName="Group1"
+                    visibleInFilterBar="true"
+                >
+                    <fb:control>
+                        <MultiComboBox
+                            id="RackId"
+                            items="{localmodel>/Rack}"
+                            change="onChangeRack"
+                            selectedKey="{localmodel>/name}"
+                        >
+                            <core:Item
+                                key="{localmodel>name}"
+                                text="{localmodel>value}"
+                            />
+                        </MultiComboBox>
+                    </fb:control>
+                </fb:FilterGroupItem>
+            </fb:filterGroupItems>
+        </fb:FilterBar>
+
+        <Table
+            id="table"
+            inset="false"
+            items="{localmodel>/ProductCollection}"
+        >
+            <columns>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="ProductID" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Name" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Manufacturer" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Storage" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Section" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Bin" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Rack" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="{localmodel>ProductID}" />
+                        <Text text="{localmodel>Name}" />
+                        <Text text="{localmodel>Manufacturer}" />
+                        <Text text="{localmodel>Storage}" />
+                        <Text text="{localmodel>Section}" />
+                        <Text text="{localmodel>Bin}" />
+                        <Text text="{localmodel>Rack}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

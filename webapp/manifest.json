@@ -1,0 +1,160 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "inventorymanagement",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.1",
+      "toolsId": "3624bdd1-8151-4513-9cda-bbfabb13a228"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "inventorymanagement.i18n.i18n"
+        }
+      },
+      "localmodel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+        "uri": "./model/data.json",
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "inventorymanagement.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "routemap",
+          "pattern": "",
+          "target": [
+            "Targetroute"
+          ]
+        },
+        {
+          "name": "routedetails",
+          "pattern": "routedetails/{text}",
+          "target": [
+            "Targetdetails"
+          ]
+        },
+        {
+          "name": "routeproduct",
+          "pattern": "routeproduct/{ProductCollection}",
+          "target": [
+            "Targetproduct"
+          ]
+        },
+        {
+          "name": "routechart",
+          "pattern": "routechart",
+          "target": [
+            "Targetchart"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetApp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "App",
+          "viewName": "App"
+        },
+        "Targetroute": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Mapview",
+          "viewName": "Mapview"
+        },
+        "Targetdetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "warehouse1",
+          "viewName": "Warehouse1"
+        },
+        "Targetproduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "product",
+          "viewName": "product"
+        },
+        "Targetchart": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "chart",
+          "viewName": "productchart"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "inventorymanagement.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

@@ -1,0 +1,665 @@
+{
+	"Spots": [
+		{
+			"pos": "77.1024902;28.7040592;0",
+			"tooltip": "Delhi",
+			"type": "Warning",
+			"text": "Warehouse111"
+		},
+		{
+			"pos": "-74.013327;40.705395;0",
+			"tooltip": "New York",
+			"type": "Warning",
+			"text": "Warehouse222"
+		},
+		{
+			"pos": "116.407072;39.906235;0",
+			"tooltip": "Beijing",
+			"type": "Warning",
+			"text": "Warehouse333"
+		}
+	],
+	"Warehouse111": {
+		"Storage": [
+			{
+				"name": "101",
+				"value": "101"
+			},
+			{
+				"name": "102",
+				"value": "102"
+			},
+			{
+				"name": "103",
+				"value": "103"
+			}
+		],
+		"Section": [
+			{
+				"name": "101",
+				"value": "101"
+			},
+			{
+				"name": "102",
+				"value": "102"
+			},
+			{
+				"name": "103",
+				"value": "103"
+			}
+		],
+		"Bin": [
+			{
+				"name": "101",
+				"value": "101"
+			},
+			{
+				"name": "102",
+				"value": "102"
+			},
+			{
+				"name": "103",
+				"value": "103"
+			}
+		],
+		"Rack": [
+			{
+				"name": "101",
+				"value": "101"
+			},
+			{
+				"name": "102",
+				"value": "102"
+			},
+			{
+				"name": "103",
+				"value": "103"
+			}
+		],
+		"WarehouseCollection": [
+			{
+				"ProductID": "11",
+				"Name": "Laptop",
+				"Manufacturer": "Apple",
+				"Storage": "101",
+				"Section": "101",
+				"Bin": "101",
+				"Rack": "101"
+			},
+			{
+				"ProductID": "12",
+				"Name": "Tablet",
+				"Manufacturer": "Apple",
+				"Storage": "102",
+				"Section": "102",
+				"Bin": "102",
+				"Rack": "102"
+			},
+			{
+				"ProductID": "13",
+				"Name": "Desktop",
+				"Manufacturer": "HP",
+				"Storage": "103",
+				"Section": "103",
+				"Bin": "103",
+				"Rack": "103"
+			},
+			{
+				"ProductID": "14",
+				"Name": "Keyboard",
+				"Manufacturer": "LG",
+				"Storage": "103",
+				"Section": "103",
+				"Bin": "103",
+				"Rack": "103"
+			},
+			{
+				"ProductID": "15",
+				"Name": "Mouse",
+				"Manufacturer": "Logitech",
+				"Storage": "103",
+				"Section": "103",
+				"Bin": "103",
+				"Rack": "103"
+			},
+			{
+				"ProductID": "16",
+				"Name": "Speaker",
+				"Manufacturer": "Boat",
+				"Storage": "101",
+				"Section": "101",
+				"Bin": "101",
+				"Rack": "101"
+			},
+			{
+				"ProductID": "17",
+				"Name": "TV",
+				"Manufacturer": "LG",
+				"Storage": "101",
+				"Section": "101",
+				"Bin": "101",
+				"Rack": "101"
+			},
+			{
+				"ProductID": "18",
+				"Name": "Fridge",
+				"Manufacturer": "LG",
+				"Storage": "102",
+				"Section": "102",
+				"Bin": "102",
+				"Rack": "102"
+			}
+		]
+	},
+	"Warehouse222": {
+		"Storage": [
+			{
+				"name": "201",
+				"value": "201"
+			},
+			{
+				"name": "202",
+				"value": "202"
+			},
+			{
+				"name": "203",
+				"value": "203"
+			}
+		],
+		"Section": [
+			{
+				"name": "201",
+				"value": "201"
+			},
+			{
+				"name": "202",
+				"value": "202"
+			},
+			{
+				"name": "203",
+				"value": "203"
+			}
+		],
+		"Bin": [
+			{
+				"name": "201",
+				"value": "201"
+			},
+			{
+				"name": "202",
+				"value": "202"
+			},
+			{
+				"name": "203",
+				"value": "203"
+			}
+		],
+		"Rack": [
+			{
+				"name": "201",
+				"value": "201"
+			},
+			{
+				"name": "202",
+				"value": "202"
+			},
+			{
+				"name": "203",
+				"value": "203"
+			}
+		],
+		"WarehouseCollection": [
+			{
+				"ProductID": "21",
+				"Name": "Chair",
+				"Manufacturer": "IKea",
+				"Storage": "201",
+				"Section": "201",
+				"Bin": "201",
+				"Rack": "201"
+			},
+			{
+				"ProductID": "22",
+				"Name": "Table",
+				"Manufacturer": "IKEA",
+				"Storage": "202",
+				"Section": "202",
+				"Bin": "202",
+				"Rack": "202"
+			},
+			{
+				"ProductID": "23",
+				"Name": "Cupboard",
+				"Manufacturer": "IKEA",
+				"Storage": "203",
+				"Section": "203",
+				"Bin": "203",
+				"Rack": "203"
+			},
+			{
+				"ProductID": "24",
+				"Name": "Standing table",
+				"Manufacturer": "IKEA",
+				"Storage": "203",
+				"Section": "203",
+				"Bin": "203",
+				"Rack": "203"
+			}
+		]
+	},
+	"Warehouse333": {
+		"Storage": [
+			{
+				"name": "301",
+				"value": "301"
+			},
+			{
+				"name": "302",
+				"value": "302"
+			},
+			{
+				"name": "303",
+				"value": "303"
+			}
+		],
+		"Section": [
+			{
+				"name": "301",
+				"value": "301"
+			},
+			{
+				"name": "302",
+				"value": "102"
+			},
+			{
+				"name": "303",
+				"value": "303"
+			}
+		],
+		"Bin": [
+			{
+				"name": "301",
+				"value": "301"
+			},
+			{
+				"name": "302",
+				"value": "302"
+			},
+			{
+				"name": "303",
+				"value": "303"
+			}
+		],
+		"Rack": [
+			{
+				"name": "301",
+				"value": "301"
+			},
+			{
+				"name": "302",
+				"value": "302"
+			},
+			{
+				"name": "303",
+				"value": "303"
+			}
+		],
+		"WarehouseCollection": [
+			{
+				"ProductID": "31",
+				"Name": "Fan",
+				"Manufacturer": "Orient",
+				"Storage": "301",
+				"Section": "301",
+				"Bin": "301",
+				"Rack": "301"
+			},
+			{
+				"ProductID": "32",
+				"Name": "White Boards",
+				"Manufacturer": "IKEA",
+				"Storage": "302",
+				"Section": "302",
+				"Bin": "302",
+				"Rack": "302"
+			},
+			{
+				"ProductID": "33",
+				"Name": "Staionaries",
+				"Manufacturer": "3M",
+				"Storage": "303",
+				"Section": "303",
+				"Bin": "303",
+				"Rack": "303"
+			},
+			{
+				"ProductID": "34",
+				"Name": "Connectors",
+				"Manufacturer": "IKEA",
+				"Storage": "304",
+				"Section": "304",
+				"Bin": "304",
+				"Rack": "304"
+			},
+			{
+				"ProductID": "35",
+				"Name": "ID Cards",
+				"Manufacturer": "3M",
+				"Storage": "305",
+				"Section": "305",
+				"Bin": "305",
+				"Rack": "305"
+			}
+		]
+	},
+	"ProductCollection": [
+		{
+			"Productnumber": "11",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "101",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Laptop",
+			"Productdesccriptionline2": "MacBook Air",
+			"Productdesccriptionline3": "8GB",
+			"SerialNo": "6729262",
+			"Manufacturer": "Apple",
+			"Vendor": "Apple",
+			"PONo": "19871",
+			"Purchasedquant": "19",
+			"Currentquant": "09",
+			"purchasedate": "09/08/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "12",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Tablet",
+			"Productdesccriptionline2": "Apple",
+			"Productdesccriptionline3": "4GB",
+			"SerialNo": "98725",
+			"Manufacturer": "Apple",
+			"Vendor": "Apple",
+			"PONo": "19872",
+			"Purchasedquant": "10",
+			"Currentquant": "05",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "13",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Desktop",
+			"Productdesccriptionline2": "HP",
+			"Productdesccriptionline3": "22 inch",
+			"SerialNo": "98712",
+			"Manufacturer": "HP",
+			"Vendor": "HP",
+			"PONo": "19873",
+			"Purchasedquant": "09",
+			"Currentquant": "05",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "14",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Keyboard",
+			"Productdesccriptionline2": "LG",
+			"Productdesccriptionline3": "Black",
+			"SerialNo": "98713",
+			"Manufacturer": "LG",
+			"Vendor": "LG",
+			"PONo": "19874",
+			"Purchasedquant": "20",
+			"Currentquant": "05",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "15",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Mouse",
+			"Productdesccriptionline2": "Logitech",
+			"Productdesccriptionline3": "Black",
+			"SerialNo": "98714",
+			"Manufacturer": "Logitech",
+			"Vendor": "Logitech",
+			"PONo": "19875",
+			"Purchasedquant": "20",
+			"Currentquant": "05",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "16",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Speaker",
+			"Productdesccriptionline2": "Boat",
+			"Productdesccriptionline3": "Black",
+			"SerialNo": "19875",
+			"Manufacturer": "Boat",
+			"Vendor": "Boat",
+			"PONo": "19876",
+			"Purchasedquant": "10",
+			"Currentquant": "05",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "17",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "TV",
+			"Productdesccriptionline2": "LG",
+			"Productdesccriptionline3": "42 INCH",
+			"SerialNo": "19876",
+			"Manufacturer": "LG",
+			"Vendor": "LG",
+			"PONo": "19877",
+			"Purchasedquant": "10",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "18",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Fridge",
+			"Productdesccriptionline2": "LG",
+			"Productdesccriptionline3": "20 Litre",
+			"SerialNo": "19987",
+			"Manufacturer": "LG",
+			"Vendor": "LG",
+			"PONo": "19878",
+			"Purchasedquant": "05",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse111"
+		},
+		{
+			"Productnumber": "21",
+			"Storagetype": "201",
+			"Storagesection": "201",
+			"Storagerack": "201",
+			"Storagebin": "201",
+			"Productdesccriptionline1": "Chair",
+			"Productdesccriptionline2": "Black",
+			"Productdesccriptionline3": "Plastic",
+			"SerialNo": "2001",
+			"Manufacturer": "IKEA",
+			"Vendor": "IKEA",
+			"PONo": "201",
+			"Purchasedquant": "05",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse222"
+		},
+		{
+			"Productnumber": "22",
+			"Storagetype": "202",
+			"Storagesection": "202",
+			"Storagerack": "202",
+			"Storagebin": "202",
+			"Productdesccriptionline1": "Table",
+			"Productdesccriptionline2": "Brown",
+			"Productdesccriptionline3": "Plastic",
+			"SerialNo": "2002",
+			"Manufacturer": "IKEA",
+			"Vendor": "IKEA",
+			"PONo": "202",
+			"Purchasedquant": "05",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse222"
+		},
+		{
+			"Productnumber": "23",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Cupborad",
+			"Productdesccriptionline2": "IKEA",
+			"Productdesccriptionline3": "Wodden White",
+			"SerialNo": "2003",
+			"Manufacturer": "IKEA",
+			"Vendor": "IKEA",
+			"PONo": "878",
+			"Purchasedquant": "05",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse222"
+		},
+		{
+			"Productnumber": "24",
+			"Storagetype": "101",
+			"Storagesection": "101",
+			"Storagerack": "102",
+			"Storagebin": "101",
+			"Productdesccriptionline1": "Standing Table",
+			"Productdesccriptionline2": "IKEA",
+			"Productdesccriptionline3": "Metal Black",
+			"SerialNo": "2004",
+			"Manufacturer": "IKEA",
+			"Vendor": "IKEA",
+			"PONo": "987",
+			"Purchasedquant": "10",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse222"
+		},
+		{
+			"Productnumber": "31",
+			"Storagetype": "301",
+			"Storagesection": "301",
+			"Storagerack": "302",
+			"Storagebin": "301",
+			"Productdesccriptionline1": "Fan",
+			"Productdesccriptionline2": "Orient",
+			"Productdesccriptionline3": "White",
+			"SerialNo": "3004",
+			"Manufacturer": "Orient",
+			"Vendor": "Orient",
+			"PONo": "789",
+			"Purchasedquant": "10",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse333"
+		},
+		{
+			"Productnumber": "32",
+			"Storagetype": "302",
+			"Storagesection": "302",
+			"Storagerack": "302",
+			"Storagebin": "302",
+			"Productdesccriptionline1": "White Boards",
+			"Productdesccriptionline2": "IKEA",
+			"Productdesccriptionline3": "10 inch",
+			"SerialNo": "3005",
+			"Manufacturer": "IKEA",
+			"Vendor": "IKEA",
+			"PONo": "770",
+			"Purchasedquant": "06",
+			"Currentquant": "02",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse333"
+		},
+		{
+			"Productnumber": "33",
+			"Storagetype": "301",
+			"Storagesection": "301",
+			"Storagerack": "302",
+			"Storagebin": "302",
+			"Productdesccriptionline1": "Staionaries",
+			"Productdesccriptionline2": "Sticky notes,Markers,Sheets",
+			"Productdesccriptionline3": "3M",
+			"SerialNo": "123",
+			"Manufacturer": "3M",
+			"Vendor": "3M",
+			"PONo": "771",
+			"Purchasedquant": "20",
+			"Currentquant": "13",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse333"
+		},
+		{
+			"Productnumber": "34",
+			"Storagetype": "301",
+			"Storagesection": "301",
+			"Storagerack": "302",
+			"Storagebin": "301",
+			"Productdesccriptionline1": "Connectors",
+			"Productdesccriptionline2": "Portronics",
+			"Productdesccriptionline3": "5 Plug",
+			"SerialNo": "345",
+			"Manufacturer": "Portronics",
+			"Vendor": "Portronics",
+			"PONo": "234",
+			"Purchasedquant": "40",
+			"Currentquant": "23",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse333"
+		},
+		{
+			"Productnumber": "35",
+			"Storagetype": "301",
+			"Storagesection": "301",
+			"Storagerack": "302",
+			"Storagebin": "301",
+			"Productdesccriptionline1": "ID Cards",
+			"Productdesccriptionline2": "Tags,Card Holders",
+			"Productdesccriptionline3": "3M",
+			"SerialNo": "675",
+			"Manufacturer": "3M",
+			"Vendor": "3M",
+			"PONo": "3454",
+			"Purchasedquant": "100",
+			"Currentquant": "73",
+			"purchasedate": "05/07/2020",
+			"warehouse":"Warehouse333"
+		}
+	]
+	
+	
+}

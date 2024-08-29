@@ -1,0 +1,103 @@
+<mvc:View
+    controllerName="inventorymanagement.controller.product"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartList="sap.ui.comp.smartlist"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <NavContainer>
+        <pages>
+            <Page>
+                <content>
+                    <VBox
+                        class="sapUiSmallMargin"
+                        height="100%"
+                    >
+                        <f:SimpleForm
+                            id="SimpleFormChange354wideDual"
+                            editable="true"
+                            labelSpanXL="4"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="0"
+                            emptySpanL="4"
+                            emptySpanM="0"
+                            emptySpanS="0"
+                            columnsXL="2"
+                            columnsL="1"
+                            columnsM="1"
+                            singleContainerFullSize="true"
+                        >
+                            <f:content>
+                                <Label text="Product#" />
+                                <Text text="{unScanModel>/Productnumber}" />
+                                <Label text="Storage Type" />
+                                <Text text="{unScanModel>/Storagetype}" />
+                                <Label text="Storage Section" />
+                                <Text text="{unScanModel>/Storagesection}" />
+                                <Label text="Storage Rack" />
+                                <Text text="{unScanModel>/Storagerack}" />
+                                <Label text="Storage Bin" />
+                                <Text text="{unScanModel>/Storagebin}" />
+                                <Toolbar />
+                                <Title
+                                    text="Description"
+                                    level="H1"
+                                />
+                                <Label text="Product Description Line1" />
+                                <Input
+                                    value="{unScanModel>/Productdesccriptionline1}"
+                                />
+                                <Label text="Product Description Line2" />
+                                <Input
+                                    value="{unScanModel>/Productdesccriptionline2}"
+                                />
+                                <Label text="Product Description Line3" />
+                                <Input
+                                    value="{unScanModel>/Productdesccriptionline3}"
+                                />
+                                <Label text="Serial#" />
+                                <Input value="{unScanModel>/SerialNo}" />
+                                <Label text="Manufacturer" />
+                                <Input value="{unScanModel>/Manufacturer}" />
+                                <Label text="Vendor" />
+                                <Input value="{unScanModel>/Vendor}" />
+                                <Toolbar />
+                                <Title
+                                    text="Availability"
+                                    level="H1"
+                                />
+                                <Label text="Purchased Quantity" />
+                                <Input value="{unScanModel>/Purchasedquant}" />
+                                <Label text="Current Quantity" />
+                                <Input
+                                    value="{unScanModel>/Currentquant}"
+                                />
+                                <Label text="last purchased date" />
+                                <Input value="{unScanModel>/purchasedate}" />
+                                <Label text="PO#" />
+                                <Input value="{unScanModel>/PONo}" />
+                            </f:content>
+                            <Toolbar />
+                            <Bar>
+                                <contentMiddle>
+                                    <Button
+                                        text="{i18n>Save}"
+                                        press="onclose"
+                                    />
+                                </contentMiddle>
+                            </Bar>
+                        </f:SimpleForm>
+                    </VBox>
+                </content>
+            </Page>
+        </pages>
+    </NavContainer>
+</mvc:View>
