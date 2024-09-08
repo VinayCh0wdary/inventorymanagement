@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="inventorymanagement.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+  <VBox class="loginPage">
+    <VBox class="loginContainer">
+      <Text class="loginTitle" text="Login" />
+      
+      <!-- Company Dropdown -->
+      <Label text="Company" class="loginField" />
+     <Select id="companySelect" class="loginField" width="200px" items="{
+    path: '/CompanySet',
+    templateShareable: true
+}">
+    <core:Item key="{CompanyID}" text="{CompanyName}" />
+</Select>
+<!-- <List items="{/CompanySet}">
+        <StandardListItem title="{CompanyID}" description="{CompanyName}" />
+    </List> -->
+
+      <!-- Username Input -->
+      <Label text="Username"  class="sapUiSmallMarginTop" />
+      <Input id="usernameInput" placeholder="Enter Username" class="loginField" width="250px" />
+
+      <!-- Password Input -->
+      <Label text="Password"  class="sapUiSmallMarginTop"  />
+      <Input id="passwordInput" placeholder="Enter Password" type="Password" width="250px" />
+
+        
+      <!-- Submit Button -->
+      <Button text="Login" press="onLoginPress" class="loginButton" width="100px" />
+    </VBox>
+  </VBox>
+  
+</mvc:View>
+

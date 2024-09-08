@@ -58,6 +58,12 @@
           "bundleName": "inventorymanagement.i18n.i18n"
         }
       },
+      "Image": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+            "bundleName": "inventorymanagement.model.image"
+        }
+    },
       "localmodel": {
         "type": "sap.ui.model.json.JSONModel",
         "settings": {},
@@ -84,8 +90,22 @@
       },
       "routes": [
         {
-          "name": "routemap",
+          "name": "routename",
           "pattern": "",
+          "target": [
+            "Targetname"
+          ]
+        },
+        {
+          "name": "routelogin",
+          "pattern": "routelogin",
+          "target": [
+            "Targetlogin"
+          ]
+        },
+        {
+          "name": "routemap",
+          "pattern": "routemap/{text}",
           "target": [
             "Targetroute"
           ]
@@ -119,6 +139,20 @@
           "clearControlAggregation": false,
           "viewId": "App",
           "viewName": "App"
+        },
+        "Targetname": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "name",
+          "viewName": "name"
+        },
+        "Targetlogin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "login",
+          "viewName": "login"
         },
         "Targetroute": {
           "viewType": "XML",

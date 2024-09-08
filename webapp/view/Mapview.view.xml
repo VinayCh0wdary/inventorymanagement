@@ -10,7 +10,7 @@
 >
     <Page
         id="page"
-        title="{i18n>Inventory Specialist}"
+        title="Inventory Management" 
     >
         <l:FixFlex minFlexSize="50px">
             <l:flexContent>

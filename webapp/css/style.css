@@ -1,4 +1,79 @@
 /* Enter your custom styles here */
-.v-m-title{
-    display:none !important;
+.v-m-title {
+  display: none !important;
+}
+.customButton {
+  font-size: 200rem; /* Set the font size to 200rem */
+  position: absolute; /* Position the button absolutely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for the button's size */
+  padding: 0.5rem 1rem; /* Optional: Adjust padding as needed */
+  text-align: center; /* Center text within the button */
+}
+/* Full-screen centered layout */
+.loginPage {
+  background-color: #f4f4f4;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "72", Arial, sans-serif;
+}
+
+/* Container for the login form */
+.loginContainer {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 100%;
+}
+
+/* Login title */
+.loginTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0a6ed1;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "72", Arial, sans-serif;
+}
+.centered-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Button styling */
+.loginButton {
+  width: 100%;
+  background-color: #0a6ed1;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Adds space between the last input and button */
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Button hover effect */
+.loginButton:hover {
+  background-color: #0854a0;
+}
+
+/* Adjusting input focus */
+input:focus,
+select:focus {
+  border-color: #0a6ed1;
+  outline: none;
+  box-shadow: 0 0 4px rgba(10, 110, 209, 0.4);
 }

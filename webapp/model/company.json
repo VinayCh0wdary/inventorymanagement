@@ -1,0 +1,16 @@
+{
+  "CompanySet": [
+    {
+      "CompanyID": "001",
+      "CompanyName": "Company A"
+    },
+    {
+      "CompanyID": "002",
+      "CompanyName": "Company B"
+    },
+    {
+      "CompanyID": "003",
+      "CompanyName": "Company C"
+    }
+  ]
+}
