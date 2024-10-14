@@ -24,6 +24,13 @@ sap.ui.define([
                 oRouter.getRoute("routedetails").attachMatched(this._onRouteMatched, this);
                 this.oFilterBar = this.getView().byId("filterbar");
                 this.oTable = this.getView().byId("table");
+                var oTableModel = new JSONModel();
+                this.getView().setModel(oTableModel, "tableData");
+            },
+            uploadButtonPress(oEvent) {
+                const model = this.getView().getModel("tableData");
+                // model.setData(oEvent.getParameter("payload")); <-- this show full data including parsed data
+                model.setData(oEvent.getParameter("rawData"));
             },
             _onRouteMatched: function (oEvent) {
                 // var selectedItem = oEvent.getParameter("arguments").selectedItem;
@@ -72,35 +79,53 @@ sap.ui.define([
                 this.oTable.getBinding("items").filter(aTableFilters);
                 this.oTable.setShowOverlay(false);
             },
+            // onChange: function (oEvent) {
+
+            //     var oRouter = this.getOwnerComponent().getRouter();
+            //     var selecteditems = oEvent.getSource().getSelectedItem().getBindingContext("localmodel");
+            //     var ProductCollection = selecteditems.getObject().ProductID;
+            //     //var oItem = this.getView().byId("CID").getValue();
+            //     //oRouter.navTo("RouteToScantag");
+            //     // var obj = this.getView().getModel("localmodel").getData();
+            //     // var oTable = this.getView().byId('table');
+
+
+            //     // var aSelectedItems = oTable.getSelectedItems();
+            //     // //var aSelectedItems = oTable.getSelectedItems();
+
+            //     // // Iterate through selected items and retrieve their data
+            //     // aSelectedItems.forEach(function (oSelectedItem) {
+            //     //     var oContext = oSelectedItem.getBindingContext();
+            //     //     var oSelectedData = oContext.getObject(); // This will give you the data of the selected item
+            //     //     console.log(oSelectedData); // Do whatever you want with the selected data
+            //     // });
+
+            //     // var ID = oEvent.getParameters().listItem.getProperty("title")
+            //     // var ProductCollection = oEvent.getParameters().listItem.getProperty("title")
+            //     oRouter.navTo("routeproduct", {
+            //         ProductCollection
+            //         // oRouter.navTo("routeproduct", {
+
+            //     });
+            // },
             onChange: function (oEvent) {
-
                 var oRouter = this.getOwnerComponent().getRouter();
-                var selecteditems = oEvent.getSource().getSelectedItem().getBindingContext("localmodel");
-                var ProductCollection = selecteditems.getObject().ProductID;
-                //var oItem = this.getView().byId("CID").getValue();
-                //oRouter.navTo("RouteToScantag");
-                // var obj = this.getView().getModel("localmodel").getData();
-                // var oTable = this.getView().byId('table');
-
-
-                // var aSelectedItems = oTable.getSelectedItems();
-                // //var aSelectedItems = oTable.getSelectedItems();
-
-                // // Iterate through selected items and retrieve their data
-                // aSelectedItems.forEach(function (oSelectedItem) {
-                //     var oContext = oSelectedItem.getBindingContext();
-                //     var oSelectedData = oContext.getObject(); // This will give you the data of the selected item
-                //     console.log(oSelectedData); // Do whatever you want with the selected data
-                // });
-
-                // var ID = oEvent.getParameters().listItem.getProperty("title")
-                // var ProductCollection = oEvent.getParameters().listItem.getProperty("title")
-                oRouter.navTo("routeproduct", {
-                    ProductCollection
-                    // oRouter.navTo("routeproduct", {
-
-                });
+                var selectedItem = oEvent.getSource().getSelectedItem();
+                
+                // Check if selectedItem is defined
+                if (selectedItem) {
+                    var selectedContext = selectedItem.getBindingContext("localmodel");
+                    if (selectedContext) {
+                        var ProductCollection = selectedContext.getObject().ProductID;
+                        oRouter.navTo("routeproduct", { ProductCollection });
+                    } else {
+                        console.error("Binding context not found");
+                    }
+                } else {
+                    console.error("No item selected");
+                }
             },
+            
             onPressGoto:function(oEvent)
             {
                  var oRouter = this.getOwnerComponent().getRouter();

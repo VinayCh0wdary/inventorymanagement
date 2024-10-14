@@ -15,6 +15,17 @@
             <Label text="{localmodel>/WarehouseName}" />
             <ToolbarSpacer />
             <Button text="Warehouse display" press="onPressGoto" />
+
+            <core:ComponentContainer width="100%" usage="spreadsheetImporter" propagateModel="true" async="true" 
+      settings="{
+        standalone:true,
+        readAllSheets:true,
+        columns: ['ProductID,Name,Manufacturer,Storage,Section,Bin,Rack'],
+        componentContainerData:{
+          uploadButtonPress:'uploadButtonPress',
+          buttonText:'Excel Upload Button'
+          }
+        }" />
         </Toolbar>
         <fb:FilterBar
             id="filterbar"
@@ -117,14 +128,14 @@
             </fb:filterGroupItems>
         </fb:FilterBar>
 
-        <Table
+        <!-- <Table
             id="table"
             inset="false"
             items="{localmodel>/Warehouse/WarehouseCollection}"
             mode="SingleSelectMaster"
             itemPress="onChange"
-        >
-           
+        > -->
+             <Table id="table" items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">
            	<headerToolbar>
 				<OverflowToolbar>
 					<ToolbarSpacer />
@@ -181,13 +192,13 @@
                     type="Navigation"
                 >
                     <cells>
-                        <Text text="{localmodel>ProductID}" />
-                        <Text text="{localmodel>Name}" />
-                        <Text text="{localmodel>Manufacturer}" />
-                        <Text text="{localmodel>Storage}" />
-                        <Text text="{localmodel>Section}" />
-                        <Text text="{localmodel>Bin}" />
-                        <Text text="{localmodel>Rack}" />
+                        <Text text="{tableData>ProductID}" />
+                        <Text text="{tableData>Name}" />
+                        <Text text="{tableData>Manufacturer}" />
+                        <Text text="{tableData>Storage}" />
+                        <Text text="{tableData>Section}" />
+                        <Text text="{tableData>Bin}" />
+                        <Text text="{tableData>Rack}" />
                     </cells>
                 </ColumnListItem>
             </items>
