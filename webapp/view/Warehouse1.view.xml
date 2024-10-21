@@ -135,10 +135,13 @@
             mode="SingleSelectMaster"
             itemPress="onChange"
         > -->
-             <Table id="table" items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">
+             <Table id="table"  items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">
            	<headerToolbar>
 				<OverflowToolbar>
+                <Text text="Dummy" itemPress="onChange"></Text>
+               
 					<ToolbarSpacer />
+
 					<Button icon="sap-icon://excel-attachment" press="onExport"/>
 				</OverflowToolbar>
 			</headerToolbar><columns>

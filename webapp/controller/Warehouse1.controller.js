@@ -4,19 +4,16 @@ sap.ui.define([
     'sap/ui/model/FilterOperator',
     "sap/ui/model/json/JSONModel",
     'sap/ui/export/library',
-	'sap/ui/export/Spreadsheet',
-	'sap/m/MessageToast'
+    'sap/ui/export/Spreadsheet',
+    'sap/m/MessageToast'
 ],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
-    function (Controller, Filter, FilterOperator, JSONModel,exportLibrary,Spreadsheet, MessageToast) {
+    function (Controller, Filter, FilterOperator, JSONModel, exportLibrary, Spreadsheet, MessageToast) {
         "use strict";
         var EdmType = exportLibrary.EdmType;
 
         return Controller.extend("inventorymanagement.controller.Warehouse1", {
             onInit: function () {
-
+                // Set up local models
                 this.localmodel = this.getView().getModel("localmodel");
                 var oRouter = this.getOwnerComponent().getRouter();
                 var oModel = this.getView().getModel("localmodel");
@@ -24,13 +21,49 @@ sap.ui.define([
                 oRouter.getRoute("routedetails").attachMatched(this._onRouteMatched, this);
                 this.oFilterBar = this.getView().byId("filterbar");
                 this.oTable = this.getView().byId("table");
+
                 var oTableModel = new JSONModel();
                 this.getView().setModel(oTableModel, "tableData");
+
+                // Load data from local storage if exists
+                this._loadFromLocalStorage();
             },
-            uploadButtonPress(oEvent) {
+            uploadButtonPress: function (oEvent) {
+                // Get uploaded raw data
+                const rawData = oEvent.getParameter("rawData");
+
+                // Save to the model for binding to table
                 const model = this.getView().getModel("tableData");
-                // model.setData(oEvent.getParameter("payload")); <-- this show full data including parsed data
-                model.setData(oEvent.getParameter("rawData"));
+                model.setData(rawData);
+
+                // Save data to local storage
+                this._saveToLocalStorage(rawData);
+
+                // Notify the user
+                MessageToast.show("Data uploaded and saved to local storage!");
+            },
+             // Save data to local storage
+             _saveToLocalStorage: function (data) {
+                try {
+                    const jsonData = JSON.stringify(data);  // Convert data to JSON string
+                    localStorage.setItem("uploadedData", jsonData);  // Save to local storage
+                } catch (e) {
+                    console.error("Failed to save to local storage:", e);
+                }
+            },
+            // Load data from local storage and bind to table
+            _loadFromLocalStorage: function () {
+                try {
+                    const storedData = localStorage.getItem("uploadedData");
+                    if (storedData) {
+                        const parsedData = JSON.parse(storedData);  // Parse the JSON string
+                        const model = this.getView().getModel("tableData");
+                        model.setData(parsedData);  // Set the data to the model
+                        MessageToast.show("Data loaded from local storage!");
+                    }
+                } catch (e) {
+                    console.error("Failed to load from local storage:", e);
+                }
             },
             _onRouteMatched: function (oEvent) {
                 // var selectedItem = oEvent.getParameter("arguments").selectedItem;
