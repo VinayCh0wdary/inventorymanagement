@@ -77,3 +77,20 @@ select:focus {
   outline: none;
   box-shadow: 0 0 4px rgba(10, 110, 209, 0.4);
 }
+.centered-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-color: #ffffff; /* White background */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  overflow: hidden; /* Prevents any scrollbars */
+}
+
+.fullScreenImage {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures it covers the full screen */
+}

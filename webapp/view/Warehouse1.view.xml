@@ -8,25 +8,27 @@
     xmlns:f="sap.f"
 >
     <Page id="page2">
-        <Toolbar
-            class="sapUiMediumMarginTop"
-            id="toolbar1"
-        >
-            <Label text="{localmodel>/WarehouseName}" />
-            <ToolbarSpacer />
-            <Button text="Warehouse display" press="onPressGoto" />
+    <Toolbar>
+    <Label text="{localmodel>/WarehouseName}" class="labelSpacing" />
+<Button text="Warehouse display" press="onPressGoto" class="buttonSpacing" />
+<core:ComponentContainer
+    width="100%"
+    usage="spreadsheetImporter"
+    propagateModel="true"
+    async="true"
+    settings="{
+      standalone:true,
+      readAllSheets:true,
+      columns: ['CIName,DomainName,IPAddress,CPU,RAM,Manufacturer'],
+      componentContainerData:{
+        uploadButtonPress:'uploadButtonPress',
+        buttonText:'Excel Upload Button'
+      }
+    }"
+/>
 
-            <core:ComponentContainer width="100%" usage="spreadsheetImporter" propagateModel="true" async="true" 
-      settings="{
-        standalone:true,
-        readAllSheets:true,
-        columns: ['ProductID,Name,Manufacturer,Storage,Section,Bin,Rack'],
-        componentContainerData:{
-          uploadButtonPress:'uploadButtonPress',
-          buttonText:'Excel Upload Button'
-          }
-        }" />
-        </Toolbar>
+</Toolbar>
+
         <fb:FilterBar
             id="filterbar"
             useToolbar="false"
@@ -138,7 +140,7 @@
              <Table id="table"  items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">
            	<headerToolbar>
 				<OverflowToolbar>
-                <Text text="Dummy" itemPress="onChange"></Text>
+                <Text text="Server Table" itemPress="onChange"></Text>
                
 					<ToolbarSpacer />
 
@@ -149,43 +151,37 @@
                     minScreenWidth="Tablet"
                     demandPopin="true"
                 >
-                    <Text text="ProductID" />
+                    <Text text="CI Name" />
                 </Column>
                 <Column
                     minScreenWidth="Tablet"
                     demandPopin="true"
                 >
-                    <Text text="Name" />
+                    <Text text="Domain Name" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="IP Address" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="CPU" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="RAM" />
                 </Column>
                 <Column
                     minScreenWidth="Tablet"
                     demandPopin="true"
                 >
                     <Text text="Manufacturer" />
-                </Column>
-                <Column
-                    minScreenWidth="Tablet"
-                    demandPopin="true"
-                >
-                    <Text text="Storage" />
-                </Column>
-                <Column
-                    minScreenWidth="Tablet"
-                    demandPopin="true"
-                >
-                    <Text text="Section" />
-                </Column>
-                <Column
-                    minScreenWidth="Tablet"
-                    demandPopin="true"
-                >
-                    <Text text="Bin" />
-                </Column>
-                <Column
-                    minScreenWidth="Tablet"
-                    demandPopin="true"
-                >
-                    <Text text="Rack" />
                 </Column>
             </columns>
 
@@ -195,13 +191,12 @@
                     type="Navigation"
                 >
                     <cells>
-                        <Text text="{tableData>ProductID}" />
-                        <Text text="{tableData>Name}" />
-                        <Text text="{tableData>Manufacturer}" />
-                        <Text text="{tableData>Storage}" />
-                        <Text text="{tableData>Section}" />
-                        <Text text="{tableData>Bin}" />
-                        <Text text="{tableData>Rack}" />
+                        <Text text="{tableData>CIName}" />
+                        <Text text="{tableData>DomainName}" />
+                        <Text text="{tableData>IPAddress}" />
+                        <Text text="{tableData>CPU}" />
+                        <Text text="{tableData>RAM}" />
+                        <Text text="{tableData>Manufacturer}" /> 
                     </cells>
                 </ColumnListItem>
             </items>

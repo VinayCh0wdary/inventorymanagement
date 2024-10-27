@@ -1,23 +1,9 @@
-<!-- <mvc:View
-    controllerName="inventorymanagement.controller.name"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:commons="sap.ui.commons"
-    xmlns:vbm="sap.ui.vbm"
-    xmlns:l="sap.ui.layout"
-    displayBlock="true"
-    height="100%"
-    xmlns="sap.m"
->
-  
-   
-    <Image src="{image>/AIM}" id="myImg" width="300px" height="300px" press="onPress"/>
-</mvc:View> -->
 <mvc:View
     controllerName="inventorymanagement.controller.name"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <VBox class="centered-layout">
-        <Image id="QRCode" width="500px" height="200px" src="{view>/imagePath}" press="onPress" />
+        <Image id="QRCode" src="{view>/imagePath}" class="fullScreenImage" press="onPress" densityAware="false" />
     </VBox>
 </mvc:View>

@@ -4,22 +4,28 @@
       "pos": "77.1024902;28.7040592;0",
       "tooltip": "Delhi",
       "type": "Warning",
-      "text": "Warehouse111"
+      "text": "Delhi"
     },
     {
       "pos": "-74.013327;40.705395;0",
       "tooltip": "New York",
       "type": "Warning",
-      "text": "Warehouse222"
+      "text": "New York"
     },
     {
       "pos": "116.407072;39.906235;0",
       "tooltip": "Beijing",
       "type": "Warning",
-      "text": "Warehouse333"
+      "text": "Beijing"
+    },
+    {
+      "pos": "40.463667;-3.74922;0",
+      "tooltip": "Spain",
+      "type": "Warning",
+      "text": "Spain"
     }
   ],
-  "Warehouse111": {
+  "Delhi": {
     "Storage": [
       {
         "name": "101",
@@ -151,7 +157,7 @@
       }
     ]
   },
-  "Warehouse222": {
+  "New York": {
     "Storage": [
       {
         "name": "201",
@@ -247,7 +253,7 @@
       }
     ]
   },
-  "Warehouse333": {
+  "Beijing": {
     "Storage": [
       {
         "name": "301",
@@ -369,7 +375,7 @@
       "Purchasedquant": "19",
       "Currentquant": "09",
       "purchasedate": "09/08/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "12",
@@ -387,7 +393,7 @@
       "Purchasedquant": "10",
       "Currentquant": "05",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "13",
@@ -405,7 +411,7 @@
       "Purchasedquant": "09",
       "Currentquant": "05",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "14",
@@ -423,7 +429,7 @@
       "Purchasedquant": "20",
       "Currentquant": "05",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "15",
@@ -441,7 +447,7 @@
       "Purchasedquant": "20",
       "Currentquant": "05",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "16",
@@ -459,7 +465,7 @@
       "Purchasedquant": "10",
       "Currentquant": "05",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "17",
@@ -477,7 +483,7 @@
       "Purchasedquant": "10",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "18",
@@ -495,7 +501,7 @@
       "Purchasedquant": "05",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse111"
+      "warehouse": "Delhi"
     },
     {
       "Productnumber": "21",
@@ -513,7 +519,7 @@
       "Purchasedquant": "05",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse222"
+      "warehouse": "New York"
     },
     {
       "Productnumber": "22",
@@ -531,7 +537,7 @@
       "Purchasedquant": "05",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse222"
+      "warehouse": "New York"
     },
     {
       "Productnumber": "23",
@@ -549,7 +555,7 @@
       "Purchasedquant": "05",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse222"
+      "warehouse": "New York"
     },
     {
       "Productnumber": "24",
@@ -567,7 +573,7 @@
       "Purchasedquant": "10",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse222"
+      "warehouse": "New York"
     },
     {
       "Productnumber": "31",
@@ -585,7 +591,7 @@
       "Purchasedquant": "10",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse333"
+      "warehouse": "Beijing"
     },
     {
       "Productnumber": "32",
@@ -603,7 +609,7 @@
       "Purchasedquant": "06",
       "Currentquant": "02",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse333"
+      "warehouse": "Beijing"
     },
     {
       "Productnumber": "33",
@@ -621,7 +627,7 @@
       "Purchasedquant": "20",
       "Currentquant": "13",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse333"
+      "warehouse": "Beijing"
     },
     {
       "Productnumber": "34",
@@ -639,7 +645,7 @@
       "Purchasedquant": "40",
       "Currentquant": "23",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse333"
+      "warehouse": "Beijing"
     },
     {
       "Productnumber": "35",
@@ -657,7 +663,7 @@
       "Purchasedquant": "100",
       "Currentquant": "73",
       "purchasedate": "05/07/2020",
-      "warehouse": "Warehouse333"
+      "warehouse": "Beijing"
     }
   ]
 }
