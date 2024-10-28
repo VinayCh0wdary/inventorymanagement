@@ -9,10 +9,10 @@
 >
     <Page id="page2">
     <Toolbar>
-    <Label text="{localmodel>/WarehouseName}" class="labelSpacing" />
+    <Label text="{localmodel>/WarehouseName}" class="sapUiLargeMarginEnd"/>
 <Button text="Warehouse display" press="onPressGoto" class="buttonSpacing" />
 <core:ComponentContainer
-    width="100%"
+    width="50%"
     usage="spreadsheetImporter"
     propagateModel="true"
     async="true"
@@ -129,14 +129,6 @@
                 </fb:FilterGroupItem>
             </fb:filterGroupItems>
         </fb:FilterBar>
-
-        <!-- <Table
-            id="table"
-            inset="false"
-            items="{localmodel>/Warehouse/WarehouseCollection}"
-            mode="SingleSelectMaster"
-            itemPress="onChange"
-        > -->
              <Table id="table"  items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">
            	<headerToolbar>
 				<OverflowToolbar>

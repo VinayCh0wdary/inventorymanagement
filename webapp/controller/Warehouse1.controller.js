@@ -26,7 +26,7 @@ sap.ui.define([
                 this.getView().setModel(oTableModel, "tableData");
 
                 // Load data from local storage if exists
-                this._loadFromLocalStorage();
+                this._loadFromSessionStorage();
             },
             uploadButtonPress: function (oEvent) {
                 // Get uploaded raw data
@@ -37,34 +37,36 @@ sap.ui.define([
                 model.setData(rawData);
 
                 // Save data to local storage
-                this._saveToLocalStorage(rawData);
+                this._saveToSessionStorage(rawData);
 
                 // Notify the user
                 MessageToast.show("Data uploaded and saved to local storage!");
             },
-             // Save data to local storage
-             _saveToLocalStorage: function (data) {
+            // Save data to session storage
+            _saveToSessionStorage: function (data) {
                 try {
                     const jsonData = JSON.stringify(data);  // Convert data to JSON string
-                    localStorage.setItem("uploadedData", jsonData);  // Save to local storage
+                    sessionStorage.setItem("uploadedData", jsonData);  // Save to session storage
                 } catch (e) {
-                    console.error("Failed to save to local storage:", e);
+                    console.error("Failed to save to session storage:", e);
                 }
             },
-            // Load data from local storage and bind to table
-            _loadFromLocalStorage: function () {
+
+            // Load data from session storage and bind to table
+            _loadFromSessionStorage: function () {
                 try {
-                    const storedData = localStorage.getItem("uploadedData");
+                    const storedData = sessionStorage.getItem("uploadedData");
                     if (storedData) {
                         const parsedData = JSON.parse(storedData);  // Parse the JSON string
                         const model = this.getView().getModel("tableData");
                         model.setData(parsedData);  // Set the data to the model
-                        MessageToast.show("Data loaded from local storage!");
+                        MessageToast.show("Data loaded from session storage!");
                     }
                 } catch (e) {
-                    console.error("Failed to load from local storage:", e);
+                    console.error("Failed to load from session storage:", e);
                 }
             },
+
             _onRouteMatched: function (oEvent) {
                 // var selectedItem = oEvent.getParameter("arguments").selectedItem;
                 var warehouse = oEvent.getParameter("arguments").text;
@@ -144,7 +146,7 @@ sap.ui.define([
             onChange: function (oEvent) {
                 var oRouter = this.getOwnerComponent().getRouter();
                 var selectedItem = oEvent.getSource().getSelectedItem();
-                
+
                 // Check if selectedItem is defined
                 if (selectedItem) {
                     var selectedContext = selectedItem.getBindingContext("localmodel");
@@ -158,77 +160,75 @@ sap.ui.define([
                     console.error("No item selected");
                 }
             },
-            
-            onPressGoto:function(oEvent)
-            {
-                 var oRouter = this.getOwnerComponent().getRouter();
+
+            onPressGoto: function (oEvent) {
+                var oRouter = this.getOwnerComponent().getRouter();
                 // var selecteditems = oEvent.getSource().getSelectedItem().getBindingContext("localmodel");
                 // var ProductCollection = selecteditems.getObject().ProductID;
                 oRouter.navTo("routechart", {
-                   
-                });   
+
+                });
             },
-                createColumnConfig: function() {
-                    return [
-                        {
-                            label: 'ProductID',
-                            property: 'ProductID',
-                            type: EdmType.Number,
-                            scale: 0
-                        },
-                        {
-                            label: 'Name',
-                            property: 'Name',
-                            type: EdmType.String
-                        },
-                        {
-                            label: 'Manufacturer',
-                            property: 'Manufacturer',
-                            width: '25'
-                        },
-                        {
-                            label: 'Storage',
-                            property: 'Storage',
-                            width: '25'
-                        },
-                        {
-                            label: 'Section',
-                            property: 'Section',
-                            width: '18'
-                        },
-                        {
-                            label: 'Bin',
-                            property: 'Bin',
-                            type: EdmType.String
-                        },
-                        {
-                            label: 'Rack',
-                            property: 'Rack',
-                            type: EdmType.String
-                        }
-                    ];
-                },
-        
-                onExport: function() {
-                    var aCols, oBinding, oSettings, oSheet, oTable;
-        
-                    oTable = this.byId('table');
-                    oBinding = oTable.getBinding('items');
-                    aCols = this.createColumnConfig();
-        
-                    oSettings = {
-                        workbook: { columns: aCols },
-                        dataSource: oBinding
-                    };
-        
-                    oSheet = new Spreadsheet(oSettings);
-                    oSheet.build()
-                        .then(function() {
-                            MessageToast.show('Spreadsheet export has finished');
-                        }).finally(function() {
-                            oSheet.destroy();
-                        });
-                }
-            });
+            createColumnConfig: function () {
+                return [
+                    {
+                        label: 'ProductID',
+                        property: 'ProductID',
+                        type: EdmType.Number,
+                        scale: 0
+                    },
+                    {
+                        label: 'Name',
+                        property: 'Name',
+                        type: EdmType.String
+                    },
+                    {
+                        label: 'Manufacturer',
+                        property: 'Manufacturer',
+                        width: '25'
+                    },
+                    {
+                        label: 'Storage',
+                        property: 'Storage',
+                        width: '25'
+                    },
+                    {
+                        label: 'Section',
+                        property: 'Section',
+                        width: '18'
+                    },
+                    {
+                        label: 'Bin',
+                        property: 'Bin',
+                        type: EdmType.String
+                    },
+                    {
+                        label: 'Rack',
+                        property: 'Rack',
+                        type: EdmType.String
+                    }
+                ];
+            },
+
+            onExport: function () {
+                var aCols, oBinding, oSettings, oSheet, oTable;
+
+                oTable = this.byId('table');
+                oBinding = oTable.getBinding('items');
+                aCols = this.createColumnConfig();
+
+                oSettings = {
+                    workbook: { columns: aCols },
+                    dataSource: oBinding
+                };
+
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build()
+                    .then(function () {
+                        MessageToast.show('Spreadsheet export has finished');
+                    }).finally(function () {
+                        oSheet.destroy();
+                    });
+            }
         });
-          
+    });
