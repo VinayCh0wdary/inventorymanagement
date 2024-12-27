@@ -15,6 +15,7 @@
     width="50%"
     usage="spreadsheetImporter"
     propagateModel="true"
+    visible="{localmodel>/isUploadButtonVisible}"
     async="true"
     settings="{
       standalone:true,
@@ -37,96 +38,62 @@
         >
             <fb:filterGroupItems>
                 <fb:FilterGroupItem
-                    name="Storage"
-                    label="{i18n>Storage Type}"
-                    groupName="Group1"
-                    visibleInFilterBar="true"
-                >
-                    <fb:control>
-                        <MultiComboBox
-                            id="SID"
-                            name="Storage"
-                            selectionChange=".onSelectionChange"
-                            items="{localmodel>/Warehouse/Storage}"
-                        >
-                            <core:Item
-                                key="{localmodel>name}"
-                                text="{localmodel>value}"
-                            />
-                        </MultiComboBox>
-                        <!-- <ComboBox
-                            id="SID"
-                            items="{localmodel>/Storage}"
-                            change="onChangeStorage"
-                            selectedKey="{localmodel>/name}"
-                        >
-                            <core:Item
-                                key="{localmodel>name}"
-                                text="{localmodel>value}"
-                            />
-                        </ComboBox> -->
-                    </fb:control>
-                </fb:FilterGroupItem>
-                <fb:FilterGroupItem
-                    name="Section"
-                    label="{i18n> Storage Section}"
-                    groupName="Group1"
-                    visibleInFilterBar="true"
-                >
-                    <fb:control>
-                        <MultiComboBox
-                            id="SectionId"
-                            items="{localmodel>/Warehouse/Section}"
-                            change="onChangeSection"
-                            selectedKey="{localmodel>/name}"
-                        >
-                            <core:Item
-                                key="{localmodel>name}"
-                                text="{localmodel>value}"
-                            />
-                        </MultiComboBox>
-                    </fb:control>
-                </fb:FilterGroupItem>
-                <fb:FilterGroupItem
-                    name=" Storage "
-                    label="{i18n>Storage Rack}"
-                    groupName="Group1"
-                    visibleInFilterBar="true"
-                >
-                    <fb:control>
-                        <MultiComboBox
-                            id="BinId"
-                            items="{localmodel>/Warehouse/Rack}"
-                            change="onChangebin"
-                            selectedKey="{localmodel>/name}"
-                        >
-                            <core:Item
-                                key="{localmodel>name}"
-                                text="{localmodel>value}"
-                            />
-                        </MultiComboBox>
-                    </fb:control>
-                </fb:FilterGroupItem>
-                <fb:FilterGroupItem
-                    name="Rack"
-                    label="{i18n>Storage Bin}"
-                    groupName="Group1"
-                    visibleInFilterBar="true"
-                >
-                    <fb:control>
-                        <MultiComboBox
-                            id="RackId"
-                            items="{localmodel>/Warehouse/Bin}"
-                            change="onChangeRack"
-                            selectedKey="{localmodel>/name}"
-                        >
-                            <core:Item
-                                key="{localmodel>name}"
-                                text="{localmodel>value}"
-                            />
-                        </MultiComboBox>
-                    </fb:control>
-                </fb:FilterGroupItem>
+    name="Storage"
+    label="{i18n>CIName}"
+    groupName="Group1"
+    visibleInFilterBar="true">
+    <fb:control>
+        <MultiComboBox
+            id="SID"
+            items="{
+                path: 'tableData>/',
+                templateShareable: false
+            }">
+            <core:Item
+                key="{tableData>CIName}"
+                text="{tableData>CIName}" />
+        </MultiComboBox>
+    </fb:control>
+</fb:FilterGroupItem>
+
+<fb:FilterGroupItem
+    name="Section"
+    label="{i18n>DomainName}"
+    groupName="Group1"
+    visibleInFilterBar="true">
+    <fb:control>
+        <MultiComboBox
+            id="SectionId"
+            items="{
+                path: 'tableData>/',
+                templateShareable: false
+            }">
+            <core:Item
+                key="{tableData>DomainName}"
+                text="{tableData>DomainName}" />
+        </MultiComboBox>
+    </fb:control>
+</fb:FilterGroupItem>
+
+<fb:FilterGroupItem
+    name="Manufacturer"
+    label="{i18n>Manufacturer}"
+    groupName="Group1"
+    visibleInFilterBar="true">
+    <fb:control>
+        <MultiComboBox
+            id="BinId"
+            items="{
+                path: 'tableData>/',
+                templateShareable: false
+            }">
+            <core:Item
+                key="{tableData>Manufacturer}"
+                text="{tableData>Manufacturer}" />
+        </MultiComboBox>
+    </fb:control>
+</fb:FilterGroupItem>
+
             </fb:filterGroupItems>
         </fb:FilterBar>
              <Table id="table"  items="{tableData>/}" width="auto" mode="SingleSelectMaster" itemPress="onChange">

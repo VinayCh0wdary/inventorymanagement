@@ -9,32 +9,10 @@
     <VBox class="loginContainer">
    
       <Text class="loginTitle" text="Login" />
-      
-       <f:SimpleForm id="SimpleFormDisplay354"
-			editable="false"
-			layout="ResponsiveGridLayout"
-			labelSpanXL="3"
-			labelSpanL="3"
-			labelSpanM="3"
-			labelSpanS="12"
-			adjustLabelSpan="false"
-			emptySpanXL="4"
-			emptySpanL="4"
-			emptySpanM="4"
-			emptySpanS="0"
-			columnsXL="1"
-			columnsL="1"
-			columnsM="1"
-			singleContainerFullSize="false" >
-			<f:content>
-				<Label text="Name" />
-				<Text id="nameText" text="Kellanova" />
-			</f:content>
-		</f:SimpleForm>
-      <!-- Company Dropdown -->
-      <Label text="Company" class="loginField" />
-      <Text text="Kellogs"></Text>
-
+      <HBox >
+       <Label text="Company:" class="sapUiSmallMarginTop sapUiTinyMarginEnd" />
+      <Text text="Nestle" class="sapUiSmallMarginTop"></Text>
+      </HBox>
       <!-- Username Input -->
       <Label text="Username"  class="sapUiSmallMarginTop" />
       <Input id="usernameInput" placeholder="Enter Username" class="loginField" width="250px" />

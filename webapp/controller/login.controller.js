@@ -4,46 +4,40 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("inventorymanagement.controller.Login", {
-       onInit: function () {
-            // Create a JSON model
-            var oModel = new JSONModel();
-
-            // Load local JSON data (assuming the file is named 'data.json' in the 'model' folder)
-            oModel.loadData(sap.ui.require.toUrl("inventorymanagement/model/company.json"));
-
-            // Set the model to the view
-            this.getView().setModel(oModel);
-        },
-        
-        loginsucess: function(oEvent) {
-          // Assuming you want to get the selected company key or any other relevant information
-          var sWarehouse = this.byId("companySelect").getSelectedKey();
-          
-          // Get the router
-          var oRouter = this.getOwnerComponent().getRouter();
-        
-          // Navigate to the route with the parameter
-          oRouter.navTo("routemap", {
-            text: sWarehouse,
-          });
-        },
-        
-
+      onInit: function () {
+      },
+      loginsucess: function (role, warehouse) {
+        var oLocalModel = this.getOwnerComponent().getModel("localmodel");
+        oLocalModel.setProperty("/UserRole", role);
+        oLocalModel.setProperty("/isUploadButtonVisible", role === "Admin");
+        var oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("routemap", {
+          text: warehouse,
+          role: role,
+        });
+      },
       onLoginPress: function (oEvent) {
-        // Get selected company, username, and password
-        var sCompany = this.byId("companySelect").getSelectedKey();
+        var sCompany = "Kelloges"; // Static company name
         var sUsername = this.byId("usernameInput").getValue();
         var sPassword = this.byId("passwordInput").getValue();
-
-        // You can add your authentication logic here
-        if (sUsername && sPassword && sCompany) {
-          // Perform authentication
-          this.loginsucess();
-          console.log("Authenticating for company:", sCompany);
+        var aUsers = [
+          {
+            username: "admin", password: "adminPass",role: "Admin", 
+          },
+          {
+            username: "employee",password: "employeepass",role: "Employee",
+          },
+        ];
+        var user = aUsers.find(function (user) {
+          return user.username === sUsername && user.password === sPassword;
+        });
+        if (user) {
+          this.loginsucess(user.role, sCompany); // Pass the static company name
+          console.log("Logged in as:", user.role);
         } else {
-          sap.m.MessageToast.show("Please fill all fields.");
+          // If authentication fails
+          sap.m.MessageToast.show("Invalid username or password.");
         }
-       
       },
     });
   }

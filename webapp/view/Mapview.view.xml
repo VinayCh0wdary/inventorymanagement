@@ -23,24 +23,6 @@
                     regionClick="onRegionClick"
                     regionContextMenu="onRegionContextMenu"
                 >
-                    <vbm:resources>
-                        <vbm:Resource
-                            name="PinGreen.png"
-                            src="test-resources/sap/ui/vbm/demokit/media/images/Green_Pin.png"
-                        />
-                        <vbm:Resource
-                            name="PinGrey.png"
-                            src="test-resources/sap/ui/vbm/demokit/media/images/Grey_Pin.png"
-                        />
-                        <vbm:Resource
-                            name="PinOrange.png"
-                            src="test-resources/sap/ui/vbm/demokit/media/images/Orange_Pin.png"
-                        />
-                        <vbm:Resource
-                            name="PinRed.png"
-                            src="test-resources/sap/ui/vbm/demokit/media/images/Red_Pin.png"
-                        />
-                    </vbm:resources>
                     <vbm:vos>
                         <vbm:Spots
                             items="{localmodel>/Spots}"

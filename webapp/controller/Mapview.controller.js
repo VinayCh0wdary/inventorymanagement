@@ -13,40 +13,18 @@ sap.ui.define([
             },
 
             onClickSpot: function (oEvent) {
-                var oRouter = this.getOwnerComponent().getRouter();
-                var sWarehouse = oEvent.getSource().getText();
 
-                // var oItem = this.getView().byId("CID").getValue();
-                // var obj = {
-                // 	"warehouse": sWarehouse,
-                // };
-                //oRouter.navTo("RouteToScantag");
+                const oRouter = this.getOwnerComponent().getRouter();
+                const oContext = oEvent.getSource().getBindingContext("localmodel");
+                const sWarehouse = oContext.getProperty("text");   // e.g., "Delhi", "New York"
+                const sCoordinates = oContext.getProperty("pos");  // e.g., "77.1024902;28.7040592;0"
+            
+                // Navigate to 'Warehouse' with warehouse name and coordinates as parameters
                 oRouter.navTo("routedetails", {
-                    text: sWarehouse
+                    text: sWarehouse,
+                    coordinates: sCoordinates
                 });
-                // var oRouter = this.getOwnerComponent().getRouter();
-                // oRouter.navTo("routedetails", {});
-
             },
-            // onSelectionChanged: function(oEvent) {
-            //     var aSelectedElements = oEvent.getParameter("elements");
-            //     // Process the selected data
-            //     this.processSelectedData(aSelectedElements);
-            // },
-
-            // processSelectedData: function(aSelectedElements) {
-            //     if (aSelectedElements && aSelectedElements.length > 0) {
-            //         var selectedText = aSelectedElements[0].getText(); // Replace with the actual method to get text
-            //         // Use the selected text as needed
-            //         console.log("Selected Text:", selectedText);
-            //     }
-            // }
-            // onPressGoto:function(oEvent)
-            // {
-            //     var oRouter = this.getOwnerComponent().getRouter();
-            //     oRouter.navTo("routechart", {
-                   
-            //     });   
-            // }
+           
         });
     });

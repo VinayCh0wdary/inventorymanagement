@@ -11,15 +11,6 @@ sap.ui.define([
 
         return Controller.extend("inventorymanagement.controller.productchart", {
             onInit: function () {
-                var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
-                Format.numericFormatter(ChartFormatter.getInstance());
-                var formatPattern = ChartFormatter.DefaultPattern;
-
-
-                var oPopOver = this.getView().byId("idPopOver");
-                oPopOver.connect(oVizFrame.getVizUid());
-                oPopOver.setFormatString(formatPattern.STANDARDFLOAT);
-
                 var oVizFrame1 = this.oVizFrame1 = this.getView().byId("idVizFrame2");
                 Format.numericFormatter(ChartFormatter.getInstance());
                 var formatPattern = ChartFormatter.DefaultPattern;

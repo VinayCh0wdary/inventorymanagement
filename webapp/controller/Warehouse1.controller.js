@@ -7,228 +7,146 @@ sap.ui.define([
     'sap/ui/export/Spreadsheet',
     'sap/m/MessageToast'
 ],
-    function (Controller, Filter, FilterOperator, JSONModel, exportLibrary, Spreadsheet, MessageToast) {
-        "use strict";
-        var EdmType = exportLibrary.EdmType;
+function (Controller, Filter, FilterOperator, JSONModel, exportLibrary, Spreadsheet, MessageToast) {
+    "use strict";
+    var EdmType = exportLibrary.EdmType;
 
-        return Controller.extend("inventorymanagement.controller.Warehouse1", {
-            onInit: function () {
-                // Set up local models
-                this.localmodel = this.getView().getModel("localmodel");
-                var oRouter = this.getOwnerComponent().getRouter();
-                var oModel = this.getView().getModel("localmodel");
-                this.getView().setModel(oModel);
-                oRouter.getRoute("routedetails").attachMatched(this._onRouteMatched, this);
-                this.oFilterBar = this.getView().byId("filterbar");
-                this.oTable = this.getView().byId("table");
+    return Controller.extend("inventorymanagement.controller.Warehouse1", {
+        onInit: function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.getRoute("routedetails").attachMatched(this._onRouteMatched, this);
+            // Get references to important controls and models
+            this.oTable = this.getView().byId("table");
+            this.oFilterBar = this.getView().byId("filterbar");  // Reference to the FilterBar
+            var oTableModel = new JSONModel();
+            this.getView().setModel(oTableModel, "tableData");
+            this.getView().setModel(this.getOwnerComponent().getModel("localmodel"), "localmodel");
+        },
+        _onRouteMatched: function (oEvent) {
+            const warehouse = oEvent.getParameter("arguments").text;
+            const coordinates = oEvent.getParameter("arguments").coordinates;
+            this.getView().getModel("localmodel").setProperty("/WarehouseName", warehouse);
+            this.getView().getModel("localmodel").setProperty("/WarehouseCoordinates", coordinates);
+            this.getView().getModel("tableData").setData([]);
+            this._loadFromSessionStorage(coordinates);
+        },
+        uploadButtonPress: function (oEvent) {
+            const rawData = oEvent.getParameter("rawData");
+            const tableModel = this.getView().getModel("tableData");
+            tableModel.setData(rawData);
+            const coordinates = this.getView().getModel("localmodel").getProperty("/WarehouseCoordinates");
+            this._saveToSessionStorage(rawData, coordinates);
 
-                var oTableModel = new JSONModel();
-                this.getView().setModel(oTableModel, "tableData");
-
-                // Load data from local storage if exists
-                this._loadFromSessionStorage();
-            },
-            uploadButtonPress: function (oEvent) {
-                // Get uploaded raw data
-                const rawData = oEvent.getParameter("rawData");
-
-                // Save to the model for binding to table
-                const model = this.getView().getModel("tableData");
-                model.setData(rawData);
-
-                // Save data to local storage
-                this._saveToSessionStorage(rawData);
-
-                // Notify the user
-                MessageToast.show("Data uploaded and saved to local storage!");
-            },
-            // Save data to session storage
-            _saveToSessionStorage: function (data) {
-                try {
-                    const jsonData = JSON.stringify(data);  // Convert data to JSON string
-                    sessionStorage.setItem("uploadedData", jsonData);  // Save to session storage
-                } catch (e) {
-                    console.error("Failed to save to session storage:", e);
-                }
-            },
-
-            // Load data from session storage and bind to table
-            _loadFromSessionStorage: function () {
-                try {
-                    const storedData = sessionStorage.getItem("uploadedData");
-                    if (storedData) {
-                        const parsedData = JSON.parse(storedData);  // Parse the JSON string
-                        const model = this.getView().getModel("tableData");
-                        model.setData(parsedData);  // Set the data to the model
-                        MessageToast.show("Data loaded from session storage!");
-                    }
-                } catch (e) {
-                    console.error("Failed to load from session storage:", e);
-                }
-            },
-
-            _onRouteMatched: function (oEvent) {
-                // var selectedItem = oEvent.getParameter("arguments").selectedItem;
-                var warehouse = oEvent.getParameter("arguments").text;
-                var localmodel = this.getView().getModel("localmodel");
-                var data = localmodel.getData();
-
-                if (warehouse == "Warehouse111") {
-                    localmodel.setProperty("/Warehouse", data.Warehouse111);
-                } else if (warehouse == "Warehouse222") {
-                    localmodel.setProperty("/Warehouse", data.Warehouse222);
-                } else {
-                    localmodel.setProperty("/Warehouse", data.Warehouse333);
-                }
-                localmodel.setProperty("/WarehouseName", warehouse);
-            },
-            onSearch: function () {
-                var aTableFilters = this.oFilterBar.getFilterGroupItems().reduce(function (aResult, oFilterGroupItem) {
-                    var oControl = oFilterGroupItem.getControl(),
-                        aSelectedKeys = oControl.getSelectedKeys(),
-                        // aSelectedKeys = oControl.getProperty("value"),
-                        // sPath = oControl.getBindingInfo("items").path.split("/")[1],
-                        aFilters = aSelectedKeys.map(function (sSelectedKey) {
-                            return new Filter({
-                                path: oFilterGroupItem.getName(),
-                                operator: FilterOperator.Contains,
-                                value1: sSelectedKey
-                            });
-                        });
-
-                    // aFilters = new Filter({
-                    //     path: sPath,
-                    //     operator: FilterOperator.Contains,
-                    //     value1: aSelectedKeys
-                    // });
-
-                    if (aSelectedKeys.length > 0) {
-                        aResult.push(new Filter({
-                            filters: aFilters
-                        }));
-                    }
-
-                    return aResult;
-                }, []);
-
-                this.oTable.getBinding("items").filter(aTableFilters);
-                this.oTable.setShowOverlay(false);
-            },
-            // onChange: function (oEvent) {
-
-            //     var oRouter = this.getOwnerComponent().getRouter();
-            //     var selecteditems = oEvent.getSource().getSelectedItem().getBindingContext("localmodel");
-            //     var ProductCollection = selecteditems.getObject().ProductID;
-            //     //var oItem = this.getView().byId("CID").getValue();
-            //     //oRouter.navTo("RouteToScantag");
-            //     // var obj = this.getView().getModel("localmodel").getData();
-            //     // var oTable = this.getView().byId('table');
-
-
-            //     // var aSelectedItems = oTable.getSelectedItems();
-            //     // //var aSelectedItems = oTable.getSelectedItems();
-
-            //     // // Iterate through selected items and retrieve their data
-            //     // aSelectedItems.forEach(function (oSelectedItem) {
-            //     //     var oContext = oSelectedItem.getBindingContext();
-            //     //     var oSelectedData = oContext.getObject(); // This will give you the data of the selected item
-            //     //     console.log(oSelectedData); // Do whatever you want with the selected data
-            //     // });
-
-            //     // var ID = oEvent.getParameters().listItem.getProperty("title")
-            //     // var ProductCollection = oEvent.getParameters().listItem.getProperty("title")
-            //     oRouter.navTo("routeproduct", {
-            //         ProductCollection
-            //         // oRouter.navTo("routeproduct", {
-
-            //     });
-            // },
-            onChange: function (oEvent) {
-                var oRouter = this.getOwnerComponent().getRouter();
-                var selectedItem = oEvent.getSource().getSelectedItem();
-
-                // Check if selectedItem is defined
-                if (selectedItem) {
-                    var selectedContext = selectedItem.getBindingContext("localmodel");
-                    if (selectedContext) {
-                        var ProductCollection = selectedContext.getObject().ProductID;
-                        oRouter.navTo("routeproduct", { ProductCollection });
-                    } else {
-                        console.error("Binding context not found");
-                    }
-                } else {
-                    console.error("No item selected");
-                }
-            },
-
-            onPressGoto: function (oEvent) {
-                var oRouter = this.getOwnerComponent().getRouter();
-                // var selecteditems = oEvent.getSource().getSelectedItem().getBindingContext("localmodel");
-                // var ProductCollection = selecteditems.getObject().ProductID;
-                oRouter.navTo("routechart", {
-
-                });
-            },
-            createColumnConfig: function () {
-                return [
-                    {
-                        label: 'ProductID',
-                        property: 'ProductID',
-                        type: EdmType.Number,
-                        scale: 0
-                    },
-                    {
-                        label: 'Name',
-                        property: 'Name',
-                        type: EdmType.String
-                    },
-                    {
-                        label: 'Manufacturer',
-                        property: 'Manufacturer',
-                        width: '25'
-                    },
-                    {
-                        label: 'Storage',
-                        property: 'Storage',
-                        width: '25'
-                    },
-                    {
-                        label: 'Section',
-                        property: 'Section',
-                        width: '18'
-                    },
-                    {
-                        label: 'Bin',
-                        property: 'Bin',
-                        type: EdmType.String
-                    },
-                    {
-                        label: 'Rack',
-                        property: 'Rack',
-                        type: EdmType.String
-                    }
-                ];
-            },
-
-            onExport: function () {
-                var aCols, oBinding, oSettings, oSheet, oTable;
-
-                oTable = this.byId('table');
-                oBinding = oTable.getBinding('items');
-                aCols = this.createColumnConfig();
-
-                oSettings = {
-                    workbook: { columns: aCols },
-                    dataSource: oBinding
-                };
-
-                oSheet = new Spreadsheet(oSettings);
-                oSheet.build()
-                    .then(function () {
-                        MessageToast.show('Spreadsheet export has finished');
-                    }).finally(function () {
-                        oSheet.destroy();
-                    });
+            MessageToast.show("Data uploaded and saved for this location!");
+        },
+        _saveToSessionStorage: function (data, coordinates) {
+            try {
+                const jsonData = JSON.stringify(data);
+                sessionStorage.setItem(`warehouseData_${coordinates}`, jsonData);
+            } catch (e) {
+                console.error("Failed to save to session storage:", e);
             }
-        });
+        },
+        _loadFromSessionStorage: function (coordinates) {
+            try {
+                const storageKey = `warehouseData_${coordinates}`;
+                const storedData = sessionStorage.getItem(storageKey);
+                if (storedData) {
+                    const parsedData = JSON.parse(storedData);
+                    this.getView().getModel("tableData").setData(parsedData);
+                    MessageToast.show("Data loaded from session storage for this location!");
+                } else {
+                    MessageToast.show("No data found for this location.");
+                }
+            } catch (e) {
+                console.error("Failed to load from session storage:", e);
+            }
+        },
+        onSearch: function () {
+            // Get the selected values from each filter item
+            var aFilters = [];
+            // Get selected keys for CI Name filter
+            var aCINames = this.getView().byId("SID").getSelectedKeys();
+            if (aCINames.length > 0) {
+                var oCINameFilter = new Filter({
+                    filters: aCINames.map(function (sCIName) {
+                        return new Filter("CIName", FilterOperator.EQ, sCIName);
+                    }),
+                    and: false
+                });
+                aFilters.push(oCINameFilter);
+            }
+            // Get selected keys for Domain Name filter
+            var aDomainNames = this.getView().byId("SectionId").getSelectedKeys();
+            if (aDomainNames.length > 0) {
+                var oDomainNameFilter = new Filter({
+                    filters: aDomainNames.map(function (sDomainName) {
+                        return new Filter("DomainName", FilterOperator.EQ, sDomainName);
+                    }),
+                    and: false
+                });
+                aFilters.push(oDomainNameFilter);
+            }
+            // Get selected keys for Manufacturer filter
+            var aManufacturers = this.getView().byId("BinId").getSelectedKeys();
+            if (aManufacturers.length > 0) {
+                var oManufacturerFilter = new Filter({
+                    filters: aManufacturers.map(function (sManufacturer) {
+                        return new Filter("Manufacturer", FilterOperator.EQ, sManufacturer);
+                    }),
+                    and: false
+                });
+                aFilters.push(oManufacturerFilter);
+            }
+            // Apply the filters to the table's binding
+            var oBinding = this.oTable.getBinding("items");
+            oBinding.filter(aFilters);
+        },
+        onChange: function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter();
+            var selectedItem = oEvent.getSource().getSelectedItem();
+            if (selectedItem) {
+                var selectedContext = selectedItem.getBindingContext("localmodel");
+                if (selectedContext) {
+                    var ProductCollection = selectedContext.getObject().ProductID;
+                    oRouter.navTo("routeproduct", { ProductCollection });
+                } else {
+                    console.error("Binding context not found");
+                }
+            } else {
+                console.error("No item selected");
+            }
+        },
+        onPressGoto: function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("routechart", {});
+        },
+        createColumnConfig: function () {
+            return [
+                { label: 'CI Name', property: 'CIName', type: EdmType.Number, scale: 0 },
+                { label: 'Domain Name', property: 'DomainName', type: EdmType.String },
+                { label: 'IP Address', property: 'IPAddress', width: '25' },
+                { label: 'CPU', property: 'CPU', width: '25' },
+                { label: 'RAM', property: 'RAM', width: '18' },
+                { label: 'Manufacturer', property: 'Manufacturer', type: EdmType.String }
+            ];
+        },
+        onExport: function () {
+            var aCols, oBinding, oSettings, oSheet, oTable;
+            oTable = this.byId('table');
+            oBinding = oTable.getBinding('items');
+            aCols = this.createColumnConfig();
+            oSettings = {
+                workbook: { columns: aCols },
+                dataSource: oBinding
+            };
+            oSheet = new Spreadsheet(oSettings);
+            oSheet.build()
+                .then(function () {
+                    MessageToast.show('Spreadsheet export has finished');
+                }).finally(function () {
+                    oSheet.destroy();
+                });
+        }
     });
+});
